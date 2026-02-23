@@ -32,7 +32,6 @@ When an order is created from a web form, Laravel automatically sends a signed w
 
 * Laravel 12 setup
 * Web form (Blade UI)
-* Customer name validation (letters only)
 * Database storage
 * Queue-based webhook processing
 * Signed webhook requests
