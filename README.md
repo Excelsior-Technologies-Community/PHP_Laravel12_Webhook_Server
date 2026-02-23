@@ -1,5 +1,14 @@
 #  PHP_Laravel12_Webhook_Server
 
+<p align="center">
+<img src="https://img.shields.io/badge/Laravel-12-red" alt="Laravel Version">
+<img src="https://img.shields.io/badge/PHP-8.2-blue" alt="PHP Version">
+<img src="https://img.shields.io/badge/Webhook-Spatie-green" alt="Webhook Package">
+<img src="https://img.shields.io/badge/Queue-Database-orange" alt="Queue">
+</p>
+
+---
+
 This project demonstrates how to build a **Webhook Sender System** using **Laravel 12** and **Spatie Laravel Webhook Server**.
 
 The application allows users to:
