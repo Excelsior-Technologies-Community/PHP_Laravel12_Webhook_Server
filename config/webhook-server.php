@@ -23,7 +23,7 @@ return [
 
     'timeout_in_seconds' => 10,
 
-    'tries' => 5,
+    'tries' => 3,
 
     'backoff_strategy' =>
         \Spatie\WebhookServer\BackoffStrategy\ExponentialBackoffStrategy::class,
@@ -33,7 +33,7 @@ return [
 
     'verify_ssl' => true,
 
-    'throw_exception_on_failure' => true,
+    'throw_exception_on_failure' => false,
 
     'tags' => ['webhook'],
 ];
