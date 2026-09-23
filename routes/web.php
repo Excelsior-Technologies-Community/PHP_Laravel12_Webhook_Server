@@ -2,10 +2,37 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\WebhookController;
 
-// Route to display the order creation form
-Route::get('/order-form', [OrderController::class, 'create']);
+/*
+|--------------------------------------------------------------------------
+| Order Routes
+|--------------------------------------------------------------------------
+*/
 
-// Route to handle order form submission and store order data
-Route::post('/orders', [OrderController::class, 'store'])
-        ->name('orders.store'); 
+Route::get('/order-form', [
+    OrderController::class,
+    'create',
+])->name('orders.create');
+
+Route::post('/orders', [
+    OrderController::class,
+    'store',
+])->name('orders.store');
+
+
+/*
+|--------------------------------------------------------------------------
+| Webhook Monitoring Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/webhooks', [
+    WebhookController::class,
+    'index',
+])->name('webhooks.index');
+
+Route::post('/webhooks/{delivery}/retry', [
+    WebhookController::class,
+    'retry',
+])->name('webhooks.retry');
