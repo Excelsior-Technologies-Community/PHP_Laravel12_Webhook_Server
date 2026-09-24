@@ -23,7 +23,7 @@ Route::post('/orders', [
 
 /*
 |--------------------------------------------------------------------------
-| Webhook Monitoring Routes
+| Webhook Dashboard
 |--------------------------------------------------------------------------
 */
 
@@ -32,7 +32,38 @@ Route::get('/webhooks', [
     'index',
 ])->name('webhooks.index');
 
+
+/*
+|--------------------------------------------------------------------------
+| Webhook Details
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/webhooks/{delivery}', [
+    WebhookController::class,
+    'show',
+])->name('webhooks.show');
+
+
+/*
+|--------------------------------------------------------------------------
+| Webhook Retry
+|--------------------------------------------------------------------------
+*/
+
 Route::post('/webhooks/{delivery}/retry', [
     WebhookController::class,
     'retry',
 ])->name('webhooks.retry');
+
+
+/*
+|--------------------------------------------------------------------------
+| Webhook CSV Export
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/webhooks-export', [
+    WebhookController::class,
+    'export',
+])->name('webhooks.export');

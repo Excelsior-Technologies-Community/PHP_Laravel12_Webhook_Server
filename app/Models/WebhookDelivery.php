@@ -31,15 +31,17 @@ class WebhookDelivery extends Model
     }
 
     /**
-     * Get the related order.
+     * Related order.
      */
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(
+            Order::class
+        );
     }
 
     /**
-     * Check whether delivery was successful.
+     * Successful status.
      */
     public function isSuccessful(): bool
     {
@@ -47,7 +49,7 @@ class WebhookDelivery extends Model
     }
 
     /**
-     * Check whether delivery failed.
+     * Failed status.
      */
     public function isFailed(): bool
     {
@@ -55,10 +57,27 @@ class WebhookDelivery extends Model
     }
 
     /**
-     * Check whether delivery is still pending.
+     * Pending status.
      */
     public function isPending(): bool
     {
         return $this->status === 'pending';
+    }
+
+    /**
+     * Status badge class.
+     */
+    public function getStatusClassAttribute(): string
+    {
+        return match ($this->status) {
+
+            'success' => 'success',
+
+            'failed' => 'danger',
+
+            'pending' => 'warning',
+
+            default => 'secondary',
+        };
     }
 }
