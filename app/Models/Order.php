@@ -12,11 +12,28 @@ class Order extends Model
         'amount',
     ];
 
+    protected $casts = [
+        'amount' => 'decimal:2',
+    ];
+
     /**
      * Get webhook deliveries for this order.
      */
     public function webhookDeliveries(): HasMany
     {
-        return $this->hasMany(WebhookDelivery::class);
+        return $this->hasMany(
+            WebhookDelivery::class
+        );
+    }
+
+    /**
+     * Get formatted amount.
+     */
+    public function getFormattedAmountAttribute(): string
+    {
+        return number_format(
+            (float) $this->amount,
+            2
+        );
     }
 }
